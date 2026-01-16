@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SubscriptionModalComponent } from './subscription-modal.component';
-import { BalanceService } from '../../../core/services/balance.service';
-import { Fund } from '../../../core/models/fund.model';
+import { BalanceService } from '../../core/services/balance.service';
+import { Fund } from '../../core/models/fund.model';
 import { ReactiveFormsModule } from '@angular/forms';
 
 describe('SubscriptionModalComponent', () => {
