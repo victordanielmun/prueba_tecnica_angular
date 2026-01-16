@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
+import { FundListComponent } from './features/funds/pages/fund-list.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  // Las rutas se cargarán dinámicamente en los siguientes pasos
+  { path: '', redirectTo: 'funds', pathMatch: 'full' },
+  { path: 'funds', component: FundListComponent },
+  { path: '**', redirectTo: 'funds' }
 ];
