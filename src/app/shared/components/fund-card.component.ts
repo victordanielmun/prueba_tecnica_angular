@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Fund } from '../../../core/models/fund.model';
+import { Fund } from '../../core/models/fund.model';
 
 @Component({
   selector: 'app-fund-card',

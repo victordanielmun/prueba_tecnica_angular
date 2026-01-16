@@ -1,8 +1,8 @@
 import { Component, input, output, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Fund } from '../../../core/models/fund.model';
-import { BalanceService } from '../../../core/services/balance.service';
+import { Fund } from '../../core/models/fund.model';
+import { BalanceService } from '../../core/services/balance.service';
 
 @Component({
   selector: 'app-subscription-modal',
