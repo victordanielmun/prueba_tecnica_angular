@@ -107,6 +107,30 @@ Para desplegar la aplicación en un entorno de producción (AWS EC2, DigitalOcea
     *   **Backend:** JSON Server en contenedor dedicado (puerto 3000, accesible internamente).
     *   **Reverse Proxy:** Nginx redirige las peticiones `/api/*` al backend.
 
+## ❓ Solución de Problemas (Troubleshooting)
+
+### No puedo acceder a la IP Pública
+
+Si `docker ps` muestra que los contenedores están corriendo (`Up`), pero no puedes acceder desde tu navegador:
+
+1.  **Validar respuesta local:**
+    Desde la terminal de tu VPS, ejecuta:
+    ```bash
+    curl -I http://localhost
+    ```
+    Si recibes `HTTP/1.1 200 OK`, el contenedor funciona correctamente.
+
+2.  **Revisar Reglas de Seguridad (Security Groups):**
+    En AWS, la regla importante es la **Inbound Rule (Entrada)**, no la de salida.
+    *   Ve a la consola de AWS EC2 -> Security Groups.
+    *   Selecciona el grupo de seguridad de tu instancia.
+    *   Pestaña **Inbound rules**.
+    *   Asegúrate de tener una regla:
+        *   **Type:** HTTP
+        *   **Protocol:** TCP
+        *   **Port range:** 80
+        *   **Source:** 0.0.0.0/0 (Anywhere)
+
 ## 🏗️ Arquitectura y Diseño
 
 El proyecto sigue una arquitectura modular y limpia, aplicando principios **SOLID**:
