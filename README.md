@@ -131,6 +131,29 @@ Si `docker ps` muestra que los contenedores están corriendo (`Up`), pero no pue
         *   **Port range:** 80
         *   **Source:** 0.0.0.0/0 (Anywhere)
 
+3.  **Protocolo correcto (HTTP vs HTTPS):**
+    Asegúrate de escribir explícitamente `http://` antes de la IP en el navegador, ya que algunos navegadores fuerzan `https://` por defecto y este servidor no tiene SSL configurado.
+    *   Correcto: `http://54.123.45.67`
+    *   Incorrecto: `https://54.123.45.67` (Dará error de conexión rechazada)
+
+4.  **Firewall Interno (VPS):**
+    Si usas una imagen como Fedora, CentOS o RHEL, es posible que el firewall interno esté bloqueando el puerto 80 aunque AWS lo permita.
+    
+    Verificar estado:
+    ```bash
+    sudo firewall-cmd --state
+    ```
+    
+    Si está activo ("running"), permite el tráfico HTTP:
+    ```bash
+    sudo firewall-cmd --zone=public --permanent --add-service=http
+    sudo firewall-cmd --reload
+    ```
+    O en sistemas con `iptables`:
+    ```bash
+    sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+    ```
+
 ## 🏗️ Arquitectura y Diseño
 
 El proyecto sigue una arquitectura modular y limpia, aplicando principios **SOLID**:
