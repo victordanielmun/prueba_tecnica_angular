@@ -78,8 +78,10 @@ Para desplegar la aplicación en un entorno de producción (AWS EC2, DigitalOcea
     sudo chmod +x /usr/local/bin/docker-compose
 
     # Instalar Docker Buildx (Requerido para compilar imágenes)
+    # IMPORTANTE: Verificar arquitectura con `uname -m`. 
+    # Si es x86_64 usa 'amd64', si es ARM/Graviton usa 'arm64'.
     mkdir -p ~/.docker/cli-plugins/
-    curl -SL https://github.com/docker/buildx/releases/latest/download/buildx-linux-amd64 -o ~/.docker/cli-plugins/docker-buildx
+    curl -SL https://github.com/docker/buildx/releases/download/v0.11.2/buildx-v0.11.2.linux-amd64 -o ~/.docker/cli-plugins/docker-buildx
     chmod +x ~/.docker/cli-plugins/docker-buildx
     ```
 
