@@ -81,7 +81,7 @@ Para desplegar la aplicación en un entorno de producción (AWS EC2, DigitalOcea
     # IMPORTANTE: Verificar arquitectura con `uname -m`. 
     # Si es x86_64 usa 'amd64', si es ARM/Graviton usa 'arm64'.
     mkdir -p ~/.docker/cli-plugins/
-    curl -SL https://github.com/docker/buildx/releases/download/v0.11.2/buildx-v0.11.2.linux-amd64 -o ~/.docker/cli-plugins/docker-buildx
+    curl -SL https://github.com/docker/buildx/releases/download/v0.17.1/buildx-v0.17.1.linux-amd64 -o ~/.docker/cli-plugins/docker-buildx
     chmod +x ~/.docker/cli-plugins/docker-buildx
     ```
 
