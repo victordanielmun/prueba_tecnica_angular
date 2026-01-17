@@ -1,0 +1,14 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install json-server globally
+RUN npm install -g json-server
+
+# Copy database file
+COPY db.json .
+
+EXPOSE 3000
+
+# Start json-server
+CMD ["json-server", "--watch", "db.json", "--port", "3000", "--host", "0.0.0.0"]

@@ -1,4 +1,5 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000'
+  production: true,
+  // Usamos ruta relativa '/api' para que Nginx intercepte y redirija al backend container
+  apiUrl: '/api' 
 };

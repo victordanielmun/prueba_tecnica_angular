@@ -41,6 +41,14 @@ import { BalanceService } from '../../core/services/balance.service';
         <!-- Nav Links -->
         <div class="flex-1 overflow-y-auto py-6">
           <nav class="space-y-1 px-4">
+            <a routerLink="/dashboard" routerLinkActive="bg-slate-800 text-green-400" 
+               class="flex items-center px-4 py-3 text-sm font-medium rounded-xl group text-slate-400 hover:bg-slate-800 hover:text-white transition-all duration-200">
+               <svg class="mr-3 h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+               </svg>
+               Inicio
+            </a>
+
             <a routerLink="/funds" routerLinkActive="bg-slate-800 text-green-400" 
                class="flex items-center px-4 py-3 text-sm font-medium rounded-xl group text-slate-400 hover:bg-slate-800 hover:text-white transition-all duration-200">
                <svg class="mr-3 h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
