@@ -141,17 +141,24 @@ Si `docker ps` muestra que los contenedores están corriendo (`Up`), pero no pue
     
     Verificar estado:
     ```bash
+    # Opción A: Firewalld (CentOS / RHEL)
     sudo firewall-cmd --state
+    
+    # Opción B: IPTables (Amazon Linux / Ubuntu)
+    sudo iptables -L -n
     ```
     
-    Si está activo ("running"), permite el tráfico HTTP:
+    Si usas **Firewalld** y está activo:
     ```bash
     sudo firewall-cmd --zone=public --permanent --add-service=http
     sudo firewall-cmd --reload
     ```
-    O en sistemas con `iptables`:
+    
+    Si usas **IPTables** y ves reglas de rechazo (REJECT/DROP):
     ```bash
     sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+    # (Opcional) Guardar reglas para persistencia
+    sudo service iptables save
     ```
 
 ## 🏗️ Arquitectura y Diseño
