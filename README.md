@@ -31,7 +31,7 @@ Sigue estos pasos para desplegar el proyecto localmente:
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
+    git clone https://github.com/victordanielmun/prueba_tecnica_angular.git
     cd btg-funds-app
     ```
 
@@ -78,10 +78,10 @@ Para desplegar la aplicación en un entorno de producción (AWS EC2, DigitalOcea
     sudo chmod +x /usr/local/bin/docker-compose
     ```
 
-3.  **Clonar el proyecto:**
+3.1.  **Clonar el repositorio:**
     ```bash
     git clone https://github.com/victordanielmun/prueba_tecnica_angular.git
-    cd prueba_tecnica_angular/btg-funds-app
+    cd prueba_tecnica_angular
     ```
 
 4.  **Construir y levantar contenedores:**
