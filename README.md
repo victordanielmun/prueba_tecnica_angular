@@ -55,17 +55,45 @@ Sigue estos pasos para desplegar el proyecto localmente:
 5.  **Abrir en el navegador:**
     Visita [http://localhost:4200](http://localhost:4200).
 
-## 🐳 Despliegue con Docker (AWS Linux)
+## 🐳 Despliegue en VPS / Servidor Linux (Docker)
 
-Para desplegar la aplicación en un entorno de producción (o simularlo localmente) usando Docker:
+Para desplegar la aplicación en un entorno de producción (AWS EC2, DigitalOcean, etc.) sigue estos pasos:
 
-1.  **Construir y levantar contenedores:**
+1.  **Conectarse al servidor VPS:**
+    ```bash
+    ssh usuario@tu-ip-servidor
+    ```
+
+2.  **Instalar Docker y Docker Compose (si no están instalados):**
+    ```bash
+    # Ejemplo para Amazon Linux 2023 / Fedora
+    sudo dnf update
+    sudo dnf install -y docker git
+    sudo service docker start
+    sudo usermod -a -G docker ec2-user
+    # (Reiniciar sesión para aplicar cambios de grupo)
+    
+    # Instalar Docker Compose
+    sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    ```
+
+3.  **Clonar el proyecto:**
+    ```bash
+    git clone https://github.com/victordanielmun/prueba_tecnica_angular.git
+    cd prueba_tecnica_angular/btg-funds-app
+    ```
+
+4.  **Construir y levantar contenedores:**
     ```bash
     docker-compose up --build -d
     ```
 
-2.  **Acceder a la aplicación:**
-    Visita [http://localhost](http://localhost) (Puerto 80).
+5.  **Verificar el despliegue:**
+    Accede a la IP pública de tu servidor en el navegador:
+    `http://TU_IP_PUBLICA` (Puerto 80).
+
+    *Nota: Asegúrate de tener habilitado el puerto 80 en el Firewall / Security Group de tu VPS.*
 
     La arquitectura en Docker consta de:
     *   **Frontend:** Nginx sirviendo la app Angular compilada (puerto 80).
