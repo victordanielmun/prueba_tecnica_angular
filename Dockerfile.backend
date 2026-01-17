@@ -11,4 +11,5 @@ COPY db.json .
 EXPOSE 3000
 
 # Start json-server
+# Host 0.0.0.0 is important for Docker networking
 CMD ["json-server", "--watch", "db.json", "--port", "3000", "--host", "0.0.0.0"]

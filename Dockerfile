@@ -3,27 +3,24 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Copy package files first for better caching
 COPY package*.json ./
 RUN npm ci
 
-# Copy source code
 COPY . .
 
-# Build for production
-RUN npm run build
+RUN npm run build -- --configuration production
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
 
-# Remove default nginx static assets
+# Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy built assets from builder stage
-# Note: Path depends on angular.json output path. Usually dist/<project-name>/browser or dist/<project-name>
+# Copy build artifacts
+# Note: Angular 17+ application builder outputs to dist/project-name/browser
 COPY --from=build /app/dist/btg-funds-app/browser /usr/share/nginx/html
 
-# Copy custom nginx config
+# Copy Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

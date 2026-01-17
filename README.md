@@ -17,6 +17,7 @@ El objetivo es simular una plataforma de inversión donde el usuario dispone de 
 *   **Gestión de Estado:** Angular Signals (Nativo).
 *   **API Mock:** JSON Server (Simulación REST API).
 *   **Control de Versiones:** Git.
+*   **Contenedorización:** Docker & Docker Compose.
 
 ## 🚀 Instrucciones de Ejecución
 
@@ -53,6 +54,23 @@ Sigue estos pasos para desplegar el proyecto localmente:
 
 5.  **Abrir en el navegador:**
     Visita [http://localhost:4200](http://localhost:4200).
+
+## 🐳 Despliegue con Docker (AWS Linux)
+
+Para desplegar la aplicación en un entorno de producción (o simularlo localmente) usando Docker:
+
+1.  **Construir y levantar contenedores:**
+    ```bash
+    docker-compose up --build -d
+    ```
+
+2.  **Acceder a la aplicación:**
+    Visita [http://localhost](http://localhost) (Puerto 80).
+
+    La arquitectura en Docker consta de:
+    *   **Frontend:** Nginx sirviendo la app Angular compilada (puerto 80).
+    *   **Backend:** JSON Server en contenedor dedicado (puerto 3000, accesible internamente).
+    *   **Reverse Proxy:** Nginx redirige las peticiones `/api/*` al backend.
 
 ## 🏗️ Arquitectura y Diseño
 
