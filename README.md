@@ -157,9 +157,15 @@ Si `docker ps` muestra que los contenedores están corriendo (`Up`), pero no pue
     Si usas **IPTables** y ves reglas de rechazo (REJECT/DROP):
     ```bash
     sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-    # (Opcional) Guardar reglas para persistencia
-    sudo service iptables save
+    # (Opcional) Guardar reglas para persistencia (depende de la distro)
+    # Amazon Linux 2023 no usa 'service iptables save' por defecto, 
+    # se recomienda instalar 'iptables-services' si se requiere persistencia.
     ```
+    
+5.  **Validación Final:**
+    Ejecuta `curl -I http://localhost` en el servidor. Deberías ver:
+    `HTTP/1.1 200 OK`
+    `Server: nginx/...`
 
 ## 🏗️ Arquitectura y Diseño
 
